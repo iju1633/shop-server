@@ -49,6 +49,7 @@
 -	implementation 'org.springframework.boot:spring-boot-starter-validation'
 -	implementation 'org.springframework.boot:spring-boot-starter-web'
 - implementation 'io.springfox:springfox-boot-starter:3.0.0'
+- implementation 'com.amazonaws:aws-java-sdk-s3:1.12.470'
 - compileOnly 'org.projectlombok:lombok'
 -	runtimeOnly 'com.mysql:mysql-connector-j'
 -	annotationProcessor 'org.projectlombok:lombok'
