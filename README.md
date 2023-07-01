@@ -24,8 +24,8 @@
 - Amazon RDS를 이용한 DB 관리
 - Amazon S3를 이용한 이미지 리소스 관리
 
-## 📐 Deployment/Diagram
-![무신사 과제 아키텍처](https://github.com/iju1633/shop-server/assets/43805087/860102a4-42c3-4afb-9f55-50ea2624ea90)
+## 📐 Service Architecture
+![무신사 과제 아키텍처](https://github.com/iju1633/shop-server/assets/43805087/9bd9a009-312f-43a7-81ce-aadbbf97c111)
 - Gradle로 빌드합니다.  
 - Jar 파일을 빌드하고 Docker Image를 만들어 Amazon EC2 인스턴스에서 docker를 사용하여 배포합니다.
 
