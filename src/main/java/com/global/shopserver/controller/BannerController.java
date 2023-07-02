@@ -43,7 +43,7 @@ public class BannerController {
 
     // 배너 삭제
     @PatchMapping("/delete")
-    @ApiOperation(value = "배너 삭제", notes = "논리적 삭제를 진행합니다.")
+    @ApiOperation(value = "배너 (논리적)삭제", notes = "논리적 삭제를 진행합니다.")
     public ResponseEntity<Void> deleteBanner(BannerDeleteDTO bannerDeleteDTO) {
 
         bannerService.deleteBanner(bannerDeleteDTO);
