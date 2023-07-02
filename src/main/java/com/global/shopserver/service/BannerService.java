@@ -36,6 +36,7 @@ public class BannerService {
                 .imageUrl(bannerRegisterDTO.getImageUrl())
                 .link(bannerRegisterDTO.getLink())
                 .introduction(bannerRegisterDTO.getIntroduction())
+                .deleted('N')
                 .build();
 
         // 배너 저장
@@ -56,6 +57,11 @@ public class BannerService {
         // 수정할 배너가 이미 삭제된 경우
         if (banner.getDeleted() == 'Y') {
             throw new IllegalArgumentException("이미 삭제된 배너입니다.");
+        }
+
+        // 이미 등록된 배너인지 검사 (배너 이미지이나 설명이 같은 것이 있다면 이미 등록된 배너라고 판단, 배너 클릭 시 이동하는 링크는 중복 가능)
+        if (bannerRepository.findBannerByImageUrlOrIntroduction(bannerUpdateDTO.getNewImageUrl(), bannerUpdateDTO.getNewIntroduction()) != null) {
+            throw new IllegalArgumentException("이미 등록된 배너입니다.");
         }
 
         // 배너 정보 수정
