@@ -22,4 +22,5 @@ public class Banner {
     private String imageUrl;
     private String link;
     private String introduction;
+    private char deleted;
 }
