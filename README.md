@@ -35,11 +35,14 @@
 이 프로젝트를 빌드하고 실행하려면 먼저 Gradle로 `.jar`을 빌드하고 docker 이미지를 빌드하여 dockerhub에 푸시합니다.  
 그런 다음 Amazon EC2에서 이미지를 가져와 도커로 배포합니다.
 
+## 🗄️ ERD
+
+<img width="674" alt="스크린샷 2023-07-03 오전 12 53 38" src="https://github.com/iju1633/shop-server/assets/43805087/8041b78a-47e8-426f-98ac-1ef161c01b3c">
+
 ## 📃 API Specification
 
 [Swagger Link](기입 예정)  
 이 프로젝트는 클라이언트와의 통신을 위해 swagger Specification 2.0 및 Swagger UI를 활용합니다.  
-
 
 ## 🏛️ Depedency Used
 - implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
