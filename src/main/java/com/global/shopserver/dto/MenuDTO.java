@@ -1,5 +1,6 @@
 package com.global.shopserver.dto;
 
+import com.global.shopserver.entity.Menu;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,4 +25,16 @@ public class MenuDTO { // 상위 메뉴 조회 시 사용
 
     @ApiModelProperty(value = "상위 메뉴 가격", example = "10000")
     private int price;
+
+    // entity -> dto
+    public static MenuDTO from(Menu entity) {
+
+        return MenuDTO.builder()
+                .menuId(entity.getId().intValue())
+                .name(entity.getName())
+                .imageUrl(entity.getImageUrl())
+                .introduction(entity.getIntroduction())
+                .price(entity.getPrice())
+                .build();
+    }
 }
