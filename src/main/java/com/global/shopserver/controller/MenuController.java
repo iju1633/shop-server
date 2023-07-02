@@ -41,7 +41,7 @@ public class MenuController {
 
     // 상위 메뉴 삭제
     @PatchMapping("/delete")
-    @ApiOperation(value = "상위 메뉴 삭제", notes = "논리적 삭제를 진행합니다. 이미 하위 메뉴가 존재하는 경우, 삭제 불가능합니다.")
+    @ApiOperation(value = "상위 메뉴 (논리적)삭제", notes = "논리적 삭제를 진행합니다. 이미 하위 메뉴가 존재하는 경우, 삭제 불가능합니다.")
     public ResponseEntity<Void> deleteMenu(MenuDeleteDTO menuDeleteDTO) {
 
         menuService.deleteMenu(menuDeleteDTO);
