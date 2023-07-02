@@ -66,7 +66,7 @@ public class MenuService {
             throw new IllegalArgumentException("이미 등록된 상위 메뉴입니다.");
         }
 
-        // 상위 메뉴 정보 수정
+        // 상위 메뉴에 새로운 정보 setting
         menu.setName(menuUpdateDTO.getNewName());
         menu.setImageUrl(menuUpdateDTO.getNewImageUrl());
         menu.setIntroduction(menuUpdateDTO.getNewIntroduction());
@@ -82,7 +82,7 @@ public class MenuService {
 
         Menu menu = menuRepository.findMenuById((long) menuDeleteDTO.getMenuId());
 
-        // 수정할 상위 메뉴가 존재하지 않는 경우
+        // 삭제할 상위 메뉴가 존재하지 않는 경우
         if (menu == null) {
             throw new IllegalArgumentException("삭제할 상위 메뉴가 존재하지 않습니다.");
         }
@@ -135,7 +135,7 @@ public class MenuService {
             throw new IllegalArgumentException("상위 메뉴가 존재하지 않습니다.");
         }
 
-        // 삭제된 배너인 경우
+        // 삭제된 상위 메뉴인 경우
         if (menu.getDeleted() == 'Y') {
             throw new IllegalArgumentException("삭제된 상위 메뉴입니다.");
         }

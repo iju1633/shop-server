@@ -77,7 +77,7 @@ public class SubMenuService {
             throw new IllegalArgumentException("이미 등록된 하위 메뉴입니다.");
         }
 
-        // 하위 메뉴 정보 수정
+        // 하위 메뉴에 새로운 정보 setting
         subMenu.setMenu(menuRepository.findMenuById((long) subMenuUpdateDTO.getSubMenuId()));
         subMenu.setName(subMenuUpdateDTO.getNewName());
         subMenu.setImageUrl(subMenuUpdateDTO.getNewImageUrl());
@@ -94,7 +94,7 @@ public class SubMenuService {
 
         SubMenu subMenu = subMenuRepository.findSubMenuById((long) subMenuDeleteDTO.getSubMenuId());
 
-        // 수정할 하위 메뉴가 존재하지 않는 경우
+        // 삭제할 하위 메뉴가 존재하지 않는 경우
         if (subMenu == null) {
             throw new IllegalArgumentException("삭제할 하위 메뉴가 존재하지 않습니다.");
         }
@@ -146,7 +146,7 @@ public class SubMenuService {
             throw new IllegalArgumentException("하위 메뉴가 존재하지 않습니다.");
         }
 
-        // 삭제된 배너인 경우
+        // 삭제된 하위 메뉴의 경우
         if (subMenu.getDeleted() == 'Y') {
             throw new IllegalArgumentException("삭제된 하위 메뉴입니다.");
         }

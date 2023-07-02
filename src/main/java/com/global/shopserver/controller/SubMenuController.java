@@ -54,14 +54,14 @@ public class SubMenuController {
     // 하위 메뉴 리스트 반환
     @GetMapping("/list")
     @ApiOperation(value = "모든 하위 메뉴 리스트 반환", notes = "모든 하위 메뉴 리스트를 반환합니다.")
-    public ResponseEntity<List<SubMenuDTO>> subMenuList() {
+    public ResponseEntity<List<SubMenuDTO>> showSubMenuList() {
 
         return ResponseEntity.ok().body(subMenuService.showSubMenuList());
     }
 
     // 특정 하위 메뉴 반환
     @GetMapping("/{subMenuId}")
-    @ApiOperation(value = "특정 하위 메뉴 정보 반환", notes = "특정 하위 메뉴의 정보를 반환합니다.")
+    @ApiOperation(value = "특정 하위 메뉴 정보 반환", notes = "하위 메뉴 id(Primary Key) 값을 매개변수로 받아 특정 하위 메뉴의 정보를 반환합니다.")
     @ApiImplicitParam(
             name = "subMenuId"
             , value = "하위 메뉴 id(Primary Key)"
