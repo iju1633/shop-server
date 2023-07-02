@@ -95,9 +95,10 @@ public class BannerService {
 
         // entity는 dto로 변경
         for (Banner banner : bannerRepository.findAll()) {
-
-            BannerDTO bannerDTO = BannerDTO.from(banner);
-            bannerDTOList.add(bannerDTO);
+            if (banner.getDeleted() == 'N') {
+                BannerDTO bannerDTO = BannerDTO.from(banner);
+                bannerDTOList.add(bannerDTO);
+            }
         }
 
         return bannerDTOList;
