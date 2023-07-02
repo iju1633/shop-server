@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
-public class OptionRegisterDTO { // 하위 메뉴 등록 시 사용
+public class SubMenuRegisterDTO { // 하위 메뉴 등록 시 사용
 
     @ApiModelProperty(value = "상위 메뉴 id(Primary Key)", example = "1")
     private int menuId;

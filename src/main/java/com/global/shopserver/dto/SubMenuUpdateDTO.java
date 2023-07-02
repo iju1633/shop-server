@@ -8,10 +8,10 @@ import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
-public class OptionUpdateDTO { // 하위 메뉴 수정 시 사용
+public class SubMenuUpdateDTO { // 하위 메뉴 수정 시 사용
 
     @ApiModelProperty(value = "수정할 하위 메뉴 id(Primary Key)", example = "1")
-    private int optionId;
+    private int subMenuId;
 
     @NotBlank(message = "새로운 하위 메뉴 이름을 기입해주세요.")
     @ApiModelProperty(value = "하위 메뉴 이름", example = "하위 메뉴 이름 예시")
