@@ -13,7 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Table(name = "option")
-public class Option {
+public class SubMenu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

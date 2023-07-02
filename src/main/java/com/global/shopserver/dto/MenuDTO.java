@@ -29,7 +29,7 @@ public class MenuDTO { // 상위 메뉴 조회 시 사용
     private int price;
 
     @ApiModelProperty(value = "하위 메뉴 리스트")
-    private List<OptionDTO> optionDTOList;
+    private List<SubMenuDTO> subMenus;
 
     // entity -> dto
     public static MenuDTO from(Menu entity) {
@@ -40,7 +40,7 @@ public class MenuDTO { // 상위 메뉴 조회 시 사용
                 .imageUrl(entity.getImageUrl())
                 .introduction(entity.getIntroduction())
                 .price(entity.getPrice())
-                .optionDTOList(null) // 서비스 단에서 주입
+                .subMenus(null) // 서비스 단에서 주입
                 .build();
     }
 }

@@ -2,9 +2,9 @@ package com.global.shopserver.service;
 
 import com.global.shopserver.dto.*;
 import com.global.shopserver.entity.Menu;
-import com.global.shopserver.entity.Option;
+import com.global.shopserver.entity.SubMenu;
 import com.global.shopserver.repository.MenuRepository;
-import com.global.shopserver.repository.OptionRepository;
+import com.global.shopserver.repository.SubMenuRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,11 +15,11 @@ import java.util.List;
 public class MenuService {
 
     private final MenuRepository menuRepository;
-    private final OptionRepository optionRepository;
+    private final SubMenuRepository subMenuRepository;
 
-    public MenuService(MenuRepository menuRepository, OptionRepository optionRepository) {
+    public MenuService(MenuRepository menuRepository, SubMenuRepository subMenuRepository) {
         this.menuRepository = menuRepository;
-        this.optionRepository = optionRepository;
+        this.subMenuRepository = subMenuRepository;
     }
 
     // 상위 메뉴 생성
@@ -47,7 +47,7 @@ public class MenuService {
 
     // 상위 메뉴 수정
     @Transactional
-    public void updateBanner(MenuUpdateDTO menuUpdateDTO) {
+    public void updateMenu(MenuUpdateDTO menuUpdateDTO) {
 
         Menu menu = menuRepository.findMenuById((long) menuUpdateDTO.getMenuId());
 
@@ -107,14 +107,14 @@ public class MenuService {
         for (Menu menu : menuRepository.findAll()) {
             if (menu.getDeleted() == 'N') {
                 MenuDTO menuDTO = MenuDTO.from(menu);
-                List<OptionDTO> optionDTOList = new ArrayList<>();
-                for (Option option : optionRepository.findAllByMenu(menu)) {
-                    if (option.getDeleted() == 'N') { // 논리적으로 삭제된 하위 메뉴는 제외
-                        OptionDTO optionDTO = OptionDTO.from(option);
-                        optionDTOList.add(optionDTO);
+                List<SubMenuDTO> subMenuDTOList = new ArrayList<>();
+                for (SubMenu subMenu : subMenuRepository.findAllByMenu(menu)) {
+                    if (subMenu.getDeleted() == 'N') { // 논리적으로 삭제된 하위 메뉴는 제외
+                        SubMenuDTO subMenuDTO = SubMenuDTO.from(subMenu);
+                        subMenuDTOList.add(subMenuDTO);
                     }
                 }
-                menuDTO.setOptionDTOList(optionDTOList);
+                menuDTO.setSubMenus(subMenuDTOList);
 
                 // 반환할 리스트에 menuDTO 추가
                 menuDTOList.add(menuDTO);
@@ -142,14 +142,14 @@ public class MenuService {
 
         // 상위 메뉴의 하위 메뉴 할당
         MenuDTO menuDTO = MenuDTO.from(menu);
-        List<OptionDTO> optionDTOList = new ArrayList<>();
-        for (Option option : optionRepository.findAllByMenu(menu)) {
-            if (option.getDeleted() == 'N') { // 논리적으로 삭제된 하위 메뉴는 제외
-                OptionDTO optionDTO = OptionDTO.from(option);
-                optionDTOList.add(optionDTO);
+        List<SubMenuDTO> subMenuDTOList = new ArrayList<>();
+        for (SubMenu subMenu : subMenuRepository.findAllByMenu(menu)) {
+            if (subMenu.getDeleted() == 'N') { // 논리적으로 삭제된 하위 메뉴는 제외
+                SubMenuDTO subMenuDTO = SubMenuDTO.from(subMenu);
+                subMenuDTOList.add(subMenuDTO);
             }
         }
-        menuDTO.setOptionDTOList(optionDTOList);
+        menuDTO.setSubMenus(subMenuDTOList);
 
         // 상위 메뉴 반환
         return menuDTO;

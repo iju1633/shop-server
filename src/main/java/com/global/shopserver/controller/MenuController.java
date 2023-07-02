@@ -33,9 +33,9 @@ public class MenuController {
     // 상위 메뉴 수정
     @PatchMapping("/update")
     @ApiOperation(value = "상위 메뉴 수정", notes = "상위 메뉴의 정보를 수정합니다. 이미 하위 메뉴가 존재하는 경우, 수정 불가능합니다.")
-    public ResponseEntity<Void> updateBanner(@Validated @RequestBody MenuUpdateDTO menuUpdateDTO) {
+    public ResponseEntity<Void> updateMenu(@Validated @RequestBody MenuUpdateDTO menuUpdateDTO) {
 
-        menuService.updateBanner(menuUpdateDTO);
+        menuService.updateMenu(menuUpdateDTO);
         return ResponseEntity.ok().build();
     }
 
