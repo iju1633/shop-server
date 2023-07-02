@@ -15,6 +15,7 @@ import java.util.Arrays;
 @EnableWebSecurity
 public class CorsConfig {
 
+    // 접속 허용
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
@@ -29,6 +30,7 @@ public class CorsConfig {
         return http.build();
     }
 
+    // cors 문제 해결
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();

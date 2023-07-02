@@ -16,9 +16,9 @@ public class GlobalExceptionHandler {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     /*
-    현재 서버에서 던지는 예외 정리
-    1. 규칙 : 에러 코드 기준 내림차순으로 정리
-    2. 마지막 에러는 Exception 으로, 다루지 못한 에러에 대해서도 일관성 있는 data 를 반환하기 위해 작성
+        현재 서버에서 던지는 예외 정리
+        1. 규칙 : 에러 코드 기준 내림차순으로 정리
+        2. 마지막 에러는 Exception 으로, 다루지 못한 에러에 대해서도 일관성 있는 data 를 반환하기 위해 작성
      */
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

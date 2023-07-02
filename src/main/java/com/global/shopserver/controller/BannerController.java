@@ -53,7 +53,7 @@ public class BannerController {
     // 배너 리스트 반환
     @GetMapping("/list")
     @ApiOperation(value = "모든 배너 리스트 반환", notes = "모든 배너 리스트를 반환합니다.")
-    public ResponseEntity<List<BannerDTO>> bannerList() {
+    public ResponseEntity<List<BannerDTO>> showBannerList() {
 
         return ResponseEntity.ok().body(bannerService.showBannerList());
     }

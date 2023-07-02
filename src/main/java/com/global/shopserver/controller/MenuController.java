@@ -1,7 +1,10 @@
 
 package com.global.shopserver.controller;
 
-import com.global.shopserver.dto.*;
+import com.global.shopserver.dto.MenuDTO;
+import com.global.shopserver.dto.MenuDeleteDTO;
+import com.global.shopserver.dto.MenuRegisterDTO;
+import com.global.shopserver.dto.MenuUpdateDTO;
 import com.global.shopserver.service.MenuService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -51,7 +54,7 @@ public class MenuController {
     // 상위 메뉴 리스트 반환
     @GetMapping("/list")
     @ApiOperation(value = "모든 상위 메뉴 리스트 반환", notes = "모든 상위 메뉴 리스트를 반환합니다. 상위 메뉴의 하위 메뉴 리스트 또한 반환합니다.")
-    public ResponseEntity<List<MenuDTO>> menuList() {
+    public ResponseEntity<List<MenuDTO>> showMenuList() {
 
         return ResponseEntity.ok().body(menuService.showMenuList());
     }

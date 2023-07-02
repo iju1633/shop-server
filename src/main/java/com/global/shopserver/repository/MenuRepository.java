@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MenuRepository extends JpaRepository<Menu, Long> {
 
-    Menu findMenuById(Long menuId);
-    Menu findMenuByName(String name);
+    Menu findMenuById(Long menuId); // id 값으로 엔티티 찾음
+
+    Menu findMenuByName(String name); // unique 함을 가지는 필드로 엔티티 찾음
 }

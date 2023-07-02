@@ -64,7 +64,7 @@ public class BannerService {
             throw new IllegalArgumentException("이미 등록된 배너입니다.");
         }
 
-        // 배너 정보 수정
+        // 배너 정보 새로 setting
         banner.setImageUrl(bannerUpdateDTO.getNewImageUrl());
         banner.setLink(bannerUpdateDTO.getNewLink());
         banner.setIntroduction(bannerUpdateDTO.getNewIntroduction());
@@ -79,7 +79,7 @@ public class BannerService {
 
         Banner banner = bannerRepository.findBannerById((long) bannerDeleteDTO.getBannerId());
 
-        // 수정할 배너가 존재하지 않는 경우
+        // 삭제할 배너가 존재하지 않는 경우
         if (banner == null) {
             throw new IllegalArgumentException("삭제할 배너가 존재하지 않습니다.");
         }
