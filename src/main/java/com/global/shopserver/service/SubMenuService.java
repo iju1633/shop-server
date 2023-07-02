@@ -107,7 +107,7 @@ public class SubMenuService {
         // 상위 메뉴에 할당이 된 하위 메뉴인 경우
         for (Menu menu : menuRepository.findAll()) {
             if (subMenuRepository.existsByMenuAndId(menu, subMenu.getId())) {
-                throw new IllegalArgumentException("상위 메뉴와 연관된 하위 메뉴는 수정할 수 없습니다.");
+                throw new IllegalArgumentException("상위 메뉴와 연관된 하위 메뉴는 삭제할 수 없습니다.");
             }
         }
 
