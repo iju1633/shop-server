@@ -62,14 +62,9 @@ public class SubMenuService {
 
         SubMenu exisingSubMenu = subMenuRepository.findSubMenuById((long) subMenuUpdateDTO.getSubMenuId());
 
-        // 수정할 하위 메뉴가 존재하지 않는 경우
-        if (exisingSubMenu == null) {
+        // 수정할 하위 메뉴가 존재하지 않는 경우 / 삭제된 하위 메뉴를 수정하려는 경우
+        if (exisingSubMenu == null || exisingSubMenu.getDeleted() == 'Y') {
             throw new IllegalArgumentException("수정할 하위 메뉴가 존재하지 않습니다.");
-        }
-
-        // 수정할 하위 메뉴가 이미 삭제된 경우
-        if (exisingSubMenu.getDeleted() == 'Y') {
-            throw new IllegalArgumentException("이미 삭제된 하위 메뉴입니다.");
         }
 
         // 이미 등록된 하위 메뉴인지 검사 (같은 이름이 있다면 이미 등록된 하위 메뉴라고 판단)
@@ -78,7 +73,6 @@ public class SubMenuService {
                 throw new IllegalArgumentException("이미 등록된 하위 메뉴입니다.");
             }
         }
-
 
         // 하위 메뉴에 새로운 정보 setting
         exisingSubMenu.setMenu(menuRepository.findMenuById((long) subMenuUpdateDTO.getSubMenuId()));
@@ -97,14 +91,9 @@ public class SubMenuService {
 
         SubMenu subMenu = subMenuRepository.findSubMenuById((long) subMenuDeleteDTO.getSubMenuId());
 
-        // 삭제할 하위 메뉴가 존재하지 않는 경우
-        if (subMenu == null) {
+        // 삭제할 하위 메뉴가 존재하지 않는 경우 / 삭제된 하위 메뉴를 또 삭제하려는 경우
+        if (subMenu == null || subMenu.getDeleted() == 'Y') {
             throw new IllegalArgumentException("삭제할 하위 메뉴가 존재하지 않습니다.");
-        }
-
-        // 이미 삭제된 하위 메뉴인 경우
-        if (subMenu.getDeleted() == 'Y') {
-            throw new IllegalArgumentException("이미 삭제된 하위 메뉴입니다.");
         }
 
         // 논리적 삭제 및 저장
@@ -137,14 +126,9 @@ public class SubMenuService {
 
         SubMenu subMenu = subMenuRepository.findSubMenuById(Long.valueOf(subMenuId));
 
-        // 하위 메뉴가 존재하지 않는 경우
-        if (subMenu == null) {
+        // 하위 메뉴가 존재하지 않는 경우 / 삭제된 하위 메뉴를 조회하려는 경우
+        if (subMenu == null || subMenu.getDeleted() == 'Y') {
             throw new IllegalArgumentException("하위 메뉴가 존재하지 않습니다.");
-        }
-
-        // 삭제된 하위 메뉴의 경우
-        if (subMenu.getDeleted() == 'Y') {
-            throw new IllegalArgumentException("삭제된 하위 메뉴입니다.");
         }
 
         // 하위 메뉴 반환
