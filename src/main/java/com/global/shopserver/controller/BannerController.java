@@ -25,7 +25,7 @@ public class BannerController {
 
     // 배너 생성
     @PostMapping
-    @ApiOperation(value = "새로운 배너 생성", notes = "이미지, 링크, 이름, 설명을 입력받아 새로운 배너를 생성합니다.")
+    @ApiOperation(value = "새로운 배너 생성", notes = "이미지, 링크, 이름, 설명을 입력받아 새로운 배너를 생성합니다.\n 배너 이미지이나 설명의 경우, 중복 허용하지 않습니다.")
     public ResponseEntity<Void> makeBanner(@Validated @RequestBody BannerRegisterDTO bannerRegisterDTO) {
 
         bannerService.makeBanner(bannerRegisterDTO);
@@ -34,7 +34,7 @@ public class BannerController {
 
     // 배너 수정
     @PatchMapping("/update")
-    @ApiOperation(value = "배너 수정", notes = "배너의 정보를 수정합니다.")
+    @ApiOperation(value = "배너 수정", notes = "배너의 정보를 수정합니다.\n 배너 이미지이나 설명의 경우, 중복 허용하지 않습니다.")
     public ResponseEntity<Void> updateBanner(@Validated @RequestBody BannerUpdateDTO bannerUpdateDTO) {
 
         bannerService.updateBanner(bannerUpdateDTO);
