@@ -10,7 +10,7 @@ import javax.validation.constraints.Min;
 @Setter
 public class SubMenuDeleteDTO { // 하위 메뉴 삭제 시 사용
 
-    @Min(value = 0, message = "값은 양수여야 합니다.")
+    @Min(value = 1, message = "삭제할 하위 메뉴를 선택해주세요.")
     @ApiModelProperty(value = "하위 메뉴 id(Primary Key)", example = "1")
     private int subMenuId;
 }

@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 @Setter
 public class BannerUpdateDTO { // 배너 수정 시 사용
 
-    @Min(value = 0, message = "값은 양수여야 합니다.")
+    @Min(value = 1, message = "수정할 배너를 선택해주세요.")
     @ApiModelProperty(value = "수정할 배너 id(Primary Key)", example = "1")
     private int bannerId;
 

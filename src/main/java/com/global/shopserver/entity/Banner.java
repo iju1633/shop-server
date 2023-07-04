@@ -13,7 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Table(name = "banner")
-public class Banner { // 배너 entity
+public class Banner extends BaseTimeEntity { // 배너 entity
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

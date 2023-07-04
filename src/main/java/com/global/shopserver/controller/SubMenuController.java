@@ -44,7 +44,7 @@ public class SubMenuController {
 
     // 하위 메뉴 삭제
     @PatchMapping("/delete")
-    @ApiOperation(value = "하위 메뉴 (논리적)삭제", notes = "논리적 삭제를 진행합니다. 이미 상위 메뉴와 관계 설정이 있는 하위 메뉴의 경우, 삭제 불가능합니다.")
+    @ApiOperation(value = "하위 메뉴 (논리적)삭제", notes = "논리적 삭제를 진행합니다. 상위 메뉴와의 연결도 사라집니다.")
     public ResponseEntity<Void> deleteSubMenu(SubMenuDeleteDTO subMenuDeleteDTO) {
 
         subMenuService.deleteSubMenu(subMenuDeleteDTO);
