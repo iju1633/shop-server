@@ -43,14 +43,10 @@
 - Gradle로 빌드합니다.  
 - Docker Image를 만들어 Amazon EC2 인스턴스에서 docker를 사용하여 배포합니다.
 
-## 🖥️ Build Environment
-
-이 프로젝트는 Amazon Web Service, Docker, GitHub Actions를 사용합니다.  
-
-프로젝트를 실행하려면 먼저 ec2 인스턴스에 접속한 이후 도커 이미지를 생성합니다.  
-`docker build -t shop-server:latest .`  
-그런 다음 container를 만들며 백그라운드 배포를 실행합니다.  
-`docker run -d --name shop-server-container -p 8080:8080 shop-server:latest`
+## 🖥️ Build Method
+- 해당 [링크](https://www.notion.so/fa997457cd2444a8848d7e68ec80dec2?pvs=4)는 운영체제별 웹서버를 로컬에서 실행시키는 방법을 설명하고 있습니다.  
+- **(추천)** 추가적으로 웹서버를 배포해놨으니 [API Documentation Link](http://3.37.107.107:8080/swagger-ui/#)로도 구현한 기능을 테스트해볼 수 있습니다.
+  - [테스트 방법](https://cyclic-baboon-a84.notion.site/674f32b8473242cba96064bafa282af0?pvs=4)
 
 ## 🗄️ ERD
 
