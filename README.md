@@ -11,14 +11,15 @@
 ![EC2](https://img.shields.io/badge/Amazon_EC2-FF9900?style=for-the-badge&logo=Amazon-EC2&logoColor=white)
 ![S3](https://img.shields.io/badge/Amazon_S3-F25F1F?style=for-the-badge&logo=Amazon-S3&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-0DB7ED?style=for-the-badge&logo=Docker&logoColor=white)
-![Swagger](https://img.shields.io/badge/Swagger-66E851?style=for-the-badge&logo=Swagger&logoColor=white)
+![Swagger](https://img.shields.io/badge/Swagger-66E851?style=for-the-badge&logo=Swagger&logoColor=white)  
+![Linux](https://img.shields.io/badge/linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 ![GitHub_Actions](https://img.shields.io/badge/GitHub_Actions-1678D2?style=for-the-badge&logo=GithubActions&logoColor=white)
 
 ### 🛠️ Tools
 ![Git](https://img.shields.io/badge/Git-F05032.svg?&style=for-the-badge&logo=Git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-000000.svg?&style=for-the-badge&logo=Github&logoColor=white)
-![IntelliJ IDE](https://img.shields.io/badge/ItelliJ%20IDE-2C2255.svg?&style=for-the-badge&logo=intellij%20IDE&logoColor=white)
-![MySQL Workbench](https://img.shields.io/badge/MySQL_Workbench-379483.svg?&style=for-the-badge&logo=mysql_workbench%20IDE&logoColor=white)
+![IntelliJ IDE](https://img.shields.io/badge/ItelliJ%20IDE-2C2255.svg?&style=for-the-badge&logo=intellij-ide&logoColor=white)
+![MySQL Workbench](https://img.shields.io/badge/MySQL_Workbench-379483.svg?&style=for-the-badge&logo=mysql-workbench&logoColor=white)
 
 ## 📖 Explanation
 
