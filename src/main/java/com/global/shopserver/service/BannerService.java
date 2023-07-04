@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class BannerService {
+public class BannerService { // 배너 관련 서비스 로직 구현
 
     private final BannerRepository bannerRepository;
 

@@ -26,6 +26,11 @@ public class BannerDTO { // 배너 조회 시 사용
     // entity -> dto
     public static BannerDTO from(Banner entity) {
 
-        return BannerDTO.builder().bannerId(entity.getId().intValue()).imageUrl(entity.getImageUrl()).link(entity.getLink()).introduction(entity.getIntroduction()).build();
+        return BannerDTO.builder()
+                .bannerId(entity.getId().intValue())
+                .imageUrl(entity.getImageUrl())
+                .link(entity.getLink())
+                .introduction(entity.getIntroduction())
+                .build();
     }
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.MethodNotAllowedException;
 
 @RestControllerAdvice
-public class GlobalExceptionHandler {
+public class GlobalExceptionHandler { // controller 단에서 나는 에러를 catch
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -19,6 +19,7 @@ public class GlobalExceptionHandler {
         현재 서버에서 던지는 예외 정리
         1. 규칙 : 에러 코드 기준 내림차순으로 정리
         2. 마지막 에러는 Exception 으로, 다루지 못한 에러에 대해서도 일관성 있는 data 를 반환하기 위해 작성
+        3. 에러 발생 시, 로그 관리를 위해 로그에 에러 메시지를 담음
      */
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class MenuService {
+public class MenuService { // 상위 메뉴 관련 서비스 로직 구현
 
     private final MenuRepository menuRepository;
     private final SubMenuRepository subMenuRepository;
