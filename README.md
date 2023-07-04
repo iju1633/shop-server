@@ -1,15 +1,24 @@
 # shop-server (2023, Musinsa Global Development Team Assignment)
 
-![Java](https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white)
-![Spring-Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=Spring-Boot&logoColor=white)
-![RDS](https://img.shields.io/badge/Amazon_RDS-4285F4?style=flat-square&logo=Amazon-RDS&logoColor=white)
-![EC2](https://img.shields.io/badge/Amazon_EC2-FF9900?style=flat-square&logo=Amazon-EC2&logoColor=white)
-![S3](https://img.shields.io/badge/Amazon_S3-F25F1F?style=flat-square&logo=Amazon-S3&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-0DB7ED?style=flat-square&logo=Docker&logoColor=white)
-![Swagger](https://img.shields.io/badge/Swagger-66E851?style=flat-square&logo=Swagger&logoColor=white)
-![GitHub_Actions](https://img.shields.io/badge/GitHub_Actions-1678D2?style=flat-square&logo=GithubActions&logoColor=white)
-
 고객에게 최적의 탐색을 제안하는 메뉴 서비스를 제공합니다.  
+
+## 💪Skills
+### Platforms & Languages
+![Java](https://img.shields.io/badge/Java-007396.svg?&style=for-the-badge&logo=JAVA&logoColor=white)
+![Spring-Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=Spring-Boot&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1.svg?&style=for-the-badge&logo=MySQL&logoColor=white)
+![RDS](https://img.shields.io/badge/Amazon_RDS-4285F4?style=for-the-badge&logo=Amazon-RDS&logoColor=white)
+![EC2](https://img.shields.io/badge/Amazon_EC2-FF9900?style=for-the-badge&logo=Amazon-EC2&logoColor=white)
+![S3](https://img.shields.io/badge/Amazon_S3-F25F1F?style=for-the-badge&logo=Amazon-S3&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-0DB7ED?style=for-the-badge&logo=Docker&logoColor=white)
+![Swagger](https://img.shields.io/badge/Swagger-66E851?style=for-the-badge&logo=Swagger&logoColor=white)
+![GitHub_Actions](https://img.shields.io/badge/GitHub_Actions-1678D2?style=for-the-badge&logo=GithubActions&logoColor=white)
+
+### 🛠️ Tools
+![Git](https://img.shields.io/badge/Git-F05032.svg?&style=for-the-badge&logo=Git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-000000.svg?&style=for-the-badge&logo=Github&logoColor=white)
+![IntelliJ IDE](https://img.shields.io/badge/ItelliJ%20IDE-2C2255.svg?&style=for-the-badge&logo=intellij%20IDE&logoColor=white)
+![MySQL Workbench](https://img.shields.io/badge/MySQL_Workbench-379483.svg?&style=for-the-badge&logo=mysql_workbench%20IDE&logoColor=white)
 
 ## 📖 Explanation
 
