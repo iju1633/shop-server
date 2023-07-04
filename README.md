@@ -35,13 +35,16 @@
 - `Amazon EC2`와 `docker`를 사용한 배포
 - `Amazon RDS`를 이용한 DB 관리
 - `Amazon S3`를 이용한 이미지 리소스 관리
-- Docker image 빌드 시 테스트 자동화 구현
-- `GitHub Actions`를 이용한 CI/CD 파이프라인 구성 및 백그라운드 배포 자동화 구현
+- Docker image 빌드 시 **테스트 자동화** 구현
+- `GitHub Actions`를 이용한 CI/CD 파이프라인 구성 및 백그라운드 **배포 자동화** 구현
+- Docker를 활용한 배포 및 이에 따른 환경 설정 코드 관리 용이
+  - **[시스템 아키텍처 설계 개선]** ec2 인스턴스에서 바로 jar 파일 배포 -> ec2 내의 docker를 통해 배포
+- 서비스 플로우 설명 및 Issue에 문서화한 내용을 기반으로한 피드백을 수용하여 **UX 개선**
 
 ## 📐 Service Architecture
 ![무신사 과제 아키텍처](https://github.com/iju1633/shop-server/assets/43805087/9bd9a009-312f-43a7-81ce-aadbbf97c111)
 - Gradle로 빌드합니다.  
-- Docker Image를 만들어 Amazon EC2 인스턴스에서 docker를 사용하여 배포합니다.
+- Spring Boot 프로젝트 내에 Dockerfile을 만들고 Amazon EC2 인스턴스 내의 docker를 사용하여 배포합니다.
 
 ## 🖥️ Build Method
 - 해당 [링크](https://www.notion.so/fa997457cd2444a8848d7e68ec80dec2?pvs=4)는 운영체제별 웹서버를 로컬에서 실행시키는 방법을 설명하고 있습니다.
@@ -55,6 +58,7 @@
 ## 📃 API Documentation
 [API Documentation Link](http://3.37.107.107:8080/swagger-ui/#)  
 <img width="725" alt="스크린샷 2023-07-03 오전 3 26 21" src="https://github.com/iju1633/shop-server/assets/43805087/7ebba94a-e691-4fb2-aa91-06bee1721c6a">
+- [테스트 방법](https://cyclic-baboon-a84.notion.site/674f32b8473242cba96064bafa282af0?pvs=4)
  
 이 프로젝트는 클라이언트와의 통신을 위해 swagger Specification 2.0 및 Swagger UI를 활용합니다.  
 
