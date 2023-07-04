@@ -26,9 +26,6 @@ public class SubMenuDTO { // 하위 메뉴 조회 시 사용
     @ApiModelProperty(value = "하위 메뉴 가격", example = "10000")
     private int price;
 
-    @ApiModelProperty(value = "상위 메뉴")
-    private MenuDTO menu;
-
     // entity -> dto
     public static SubMenuDTO from(SubMenu entity) {
 
@@ -38,7 +35,6 @@ public class SubMenuDTO { // 하위 메뉴 조회 시 사용
                 .imageUrl(entity.getImageUrl())
                 .introduction(entity.getIntroduction())
                 .price(entity.getPrice())
-                .menu(MenuDTO.from(entity.getMenu()))
                 .build();
     }
 }
