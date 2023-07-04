@@ -37,7 +37,7 @@
 
 ## 🗄️ ERD
 
-<img width="674" alt="스크린샷 2023-07-03 오전 12 53 38" src="https://github.com/iju1633/shop-server/assets/43805087/8041b78a-47e8-426f-98ac-1ef161c01b3c">
+<img width="660" alt="스크린샷 2023-07-04 오후 2 59 06" src="https://github.com/iju1633/shop-server/assets/43805087/03f15192-4529-4820-b878-3cfcceeaca4d">
 
 ## 📃 API Specification
 [Swagger Link](http://3.37.107.107/swagger-ui/#/)  
@@ -47,19 +47,19 @@
 
 ## 🏛️ Depedency Used
 - implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
--	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+- implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 - implementation 'org.springframework.boot:spring-boot-starter-log4j2'
--	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
--	implementation 'org.springframework.boot:spring-boot-starter-security'
--	implementation 'org.springframework.boot:spring-boot-starter-validation'
--	implementation 'org.springframework.boot:spring-boot-starter-web'
+- implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+- implementation 'org.springframework.boot:spring-boot-starter-security'
+- implementation 'org.springframework.boot:spring-boot-starter-validation'
+- implementation 'org.springframework.boot:spring-boot-starter-web'
 - implementation 'io.springfox:springfox-boot-starter:3.0.0'
 - implementation 'com.amazonaws:aws-java-sdk-s3:1.12.470'
 - compileOnly 'org.projectlombok:lombok'
--	runtimeOnly 'com.mysql:mysql-connector-j'
--	annotationProcessor 'org.projectlombok:lombok'
--	testImplementation 'org.springframework.boot:spring-boot-starter-test'
--	testImplementation 'org.springframework.security:spring-security-test'
+- runtimeOnly 'com.mysql:mysql-connector-j'
+- annotationProcessor 'org.projectlombok:lombok'
+- testImplementation 'org.springframework.boot:spring-boot-starter-test'
+- testImplementation 'org.springframework.security:spring-security-test'
   
 #### Contributor
 
