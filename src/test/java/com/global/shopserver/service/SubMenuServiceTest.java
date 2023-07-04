@@ -35,56 +35,45 @@ class SubMenuServiceTest { // SubMenuService의 메서드별 테스트 진행
     @Test
     void testMakeSubMenu() {
 
-        // when
         when(menuRepository.findMenuById(anyLong())).thenReturn(new Menu(1L, "name", "imageUrl", "introduction", 0, 'N'));
-        when(subMenuRepository.findSubMenuByName(anyString())).thenReturn(new SubMenu(1L, "name", "imageUrl", "introduction", 0, 'N', new Menu(1L, "name", "imageUrl", "introduction", 0, 'N')));
+        when(subMenuRepository.findAllByName(anyString())).thenReturn(List.of(new SubMenu(1L, "name", "imageUrl", "introduction", 0, 'N', new Menu(1L, "name", "imageUrl", "introduction", 0, 'N'))));
 
-        // then
         subMenuService.makeSubMenu(new SubMenuRegisterDTO());
     }
 
     @Test
     void testUpdateSubMenu() {
 
-        // when
         when(menuRepository.findMenuById(anyLong())).thenReturn(new Menu(1L, "name", "imageUrl", "introduction", 0, 'N'));
         when(subMenuRepository.findSubMenuById(anyLong())).thenReturn(new SubMenu(1L, "name", "imageUrl", "introduction", 0, 'N', new Menu(1L, "name", "imageUrl", "introduction", 0, 'N')));
-        when(subMenuRepository.findSubMenuByName(anyString())).thenReturn(new SubMenu(1L, "name", "imageUrl", "introduction", 0, 'N', new Menu(1L, "name", "imageUrl", "introduction", 0, 'N')));
+        when(subMenuRepository.findAllByName(anyString())).thenReturn(List.of(new SubMenu(1L, "name", "imageUrl", "introduction", 0, 'N', new Menu(1L, "name", "imageUrl", "introduction", 0, 'N'))));
         when(subMenuRepository.existsByMenuAndId(any(), anyLong())).thenReturn(true);
 
-
-        // then
         subMenuService.updateSubMenu(new SubMenuUpdateDTO());
     }
 
     @Test
     void testDeleteSubMenu() {
 
-        // when
         when(subMenuRepository.findSubMenuById(anyLong())).thenReturn(new SubMenu(1L, "name", "imageUrl", "introduction", 0, 'N', new Menu(1L, "name", "imageUrl", "introduction", 0, 'N')));
         when(subMenuRepository.existsByMenuAndId(any(), anyLong())).thenReturn(true);
 
-        // then
         subMenuService.deleteSubMenu(new SubMenuDeleteDTO());
     }
 
     @Test
     void testShowSubMenuList() {
 
-        // given
         List<SubMenuDTO> result = subMenuService.showSubMenuList();
 
-        // then
         Assertions.assertNotNull(result);
     }
 
     @Test
     void testShowSubMenu() {
 
-        // when
         when(subMenuRepository.findSubMenuById(anyLong())).thenReturn(new SubMenu(1L, "name", "imageUrl", "introduction", 0, 'N', new Menu(1L, "name", "imageUrl", "introduction", 0, 'N')));
 
-        // then
         SubMenuDTO result = subMenuService.showSubMenu("1");
         Assertions.assertNotNull(result);
     }

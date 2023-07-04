@@ -14,7 +14,7 @@ public interface SubMenuRepository extends JpaRepository<SubMenu, Long> {
 
     SubMenu findSubMenuById(Long subMenuId); // id로 엔티티 찾음
 
-    SubMenu findSubMenuByName(String name); // unique 함을 가지는 필드로 엔티티 찾음
+    List<SubMenu> findAllByName(String name); // 논리적 삭제를 하므로 중복(image, introduction)될 수 있기에 list를 반환 (등록과 수정에 사용)
 
     boolean existsByMenuAndId(Menu menu, Long subMenuId); // 상위 메뉴에 해당 하위 메뉴가 할당되어 있는 지 여부를 반환
 }

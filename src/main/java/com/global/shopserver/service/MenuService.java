@@ -27,9 +27,11 @@ public class MenuService {
     public void makeMenu(MenuRegisterDTO menuRegisterDTO) {
 
         // 이미 등록된 상위 메뉴인지 검사 (같은 이름이 있다면 이미 등록된 상위 메뉴라고 판단)
-        Menu menu = menuRepository.findMenuByName(menuRegisterDTO.getName());
-        if (menu != null) {
-            throw new IllegalArgumentException("이미 등록된 상위 메뉴입니다.");
+        List<Menu> menus = menuRepository.findAllByName(menuRegisterDTO.getName());
+        for (Menu menu : menus) {
+            if (menu.getDeleted() == 'N') {
+                throw new IllegalArgumentException("이미 등록된 상위 메뉴입니다.");
+            }
         }
 
         // 새로운 상위 메뉴 등록
@@ -49,31 +51,34 @@ public class MenuService {
     @Transactional
     public void updateMenu(MenuUpdateDTO menuUpdateDTO) {
 
-        Menu menu = menuRepository.findMenuById((long) menuUpdateDTO.getMenuId());
+        Menu existingMenu = menuRepository.findMenuById((long) menuUpdateDTO.getMenuId());
 
         // 수정할 상위 메뉴가 존재하지 않는 경우
-        if (menu == null) {
+        if (existingMenu == null) {
             throw new IllegalArgumentException("수정할 상위 메뉴가 존재하지 않습니다.");
         }
 
         // 수정할 상위 메뉴가 이미 삭제된 경우
-        if (menu.getDeleted() == 'Y') {
+        if (existingMenu.getDeleted() == 'Y') {
             throw new IllegalArgumentException("이미 삭제된 상위 메뉴입니다.");
         }
 
         // 이미 등록된 상위 메뉴인지 검사 (같은 이름이 있다면 이미 등록된 상위 메뉴라고 판단)
-        if (menuRepository.findMenuByName(menuUpdateDTO.getNewName()) != null) {
-            throw new IllegalArgumentException("이미 등록된 상위 메뉴입니다.");
+        List<Menu> menus = menuRepository.findAllByName(menuUpdateDTO.getNewName());
+        for (Menu menu : menus) {
+            if (menu.getDeleted() == 'N') {
+                throw new IllegalArgumentException("이미 등록된 상위 메뉴입니다.");
+            }
         }
 
         // 상위 메뉴에 새로운 정보 setting
-        menu.setName(menuUpdateDTO.getNewName());
-        menu.setImageUrl(menuUpdateDTO.getNewImageUrl());
-        menu.setIntroduction(menuUpdateDTO.getNewIntroduction());
-        menu.setPrice(menuUpdateDTO.getNewPrice());
+        existingMenu.setName(menuUpdateDTO.getNewName());
+        existingMenu.setImageUrl(menuUpdateDTO.getNewImageUrl());
+        existingMenu.setIntroduction(menuUpdateDTO.getNewIntroduction());
+        existingMenu.setPrice(menuUpdateDTO.getNewPrice());
 
         // 상위 메뉴 갱신
-        menuRepository.save(menu);
+        menuRepository.save(existingMenu);
     }
 
     // 상위 메뉴 (논리적) 삭제

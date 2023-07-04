@@ -31,51 +31,41 @@ class BannerServiceTest { // BannerService의 메서드 별 테스트 진행
     @Test
     void testMakeBanner() {
 
-        // when
-        when(bannerRepository.findBannerByImageUrlOrIntroduction(anyString(), anyString())).thenReturn(new Banner(1L, "imageUrl", "link", "introduction", 'N'));
+        when(bannerRepository.findAllByImageUrlOrIntroduction(anyString(), anyString())).thenReturn(List.of(new Banner(1L, "imageUrl", "link", "introduction", 'N')));
 
-        // then
         bannerService.makeBanner(new BannerRegisterDTO());
     }
 
     @Test
     void testUpdateBanner() {
 
-        // when
         when(bannerRepository.findBannerById(anyLong())).thenReturn(new Banner(1L, "imageUrl", "link", "introduction", 'N'));
-        when(bannerRepository.findBannerByImageUrlOrIntroduction(anyString(), anyString())).thenReturn(new Banner(1L, "imageUrl", "link", "introduction", 'N'));
+        when(bannerRepository.findAllByImageUrlOrIntroduction(anyString(), anyString())).thenReturn(List.of(new Banner(1L, "imageUrl", "link", "introduction", 'N')));
 
-        // then
         bannerService.updateBanner(new BannerUpdateDTO());
     }
 
     @Test
     void testDeleteBanner() {
 
-        // when
         when(bannerRepository.findBannerById(anyLong())).thenReturn(new Banner(1L, "imageUrl", "link", "introduction", 'N'));
 
-        // then
         bannerService.deleteBanner(new BannerDeleteDTO());
     }
 
     @Test
     void testShowBannerList() {
 
-        // given
         List<BannerDTO> result = bannerService.showBannerList();
 
-        // then
         Assertions.assertNotNull(result);
     }
 
     @Test
     void testShowBanner() {
 
-        // when
         when(bannerRepository.findBannerById(anyLong())).thenReturn(new Banner(1L, "imageUrl", "link", "introduction", 'N'));
 
-        // then
         BannerDTO result = bannerService.showBanner("1");
         Assertions.assertNotNull(result);
     }
