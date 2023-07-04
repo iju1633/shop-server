@@ -7,6 +7,7 @@
 ![S3](https://img.shields.io/badge/Amazon_S3-F25F1F?style=flat-square&logo=Amazon-S3&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-0DB7ED?style=flat-square&logo=Docker&logoColor=white)
 ![Swagger](https://img.shields.io/badge/Swagger-66E851?style=flat-square&logo=Swagger&logoColor=white)
+![GitHub_Actions](https://img.shields.io/badge/GitHub_Actions-1678D2?style=flat-square&logo=GithubActions&logoColor=white)
 
 고객에게 최적의 탐색을 제안하는 메뉴 서비스를 제공합니다.  
 
@@ -20,20 +21,25 @@
 ## 💎 Main Features
 
 - Spring Boot 애플리케이션으로 구성된 HTTP REST API 서버
-- Amazon EC2와 docker 및 dockerhub를 사용한 배포
+- Amazon EC2와 docker를 사용한 배포
 - Amazon RDS를 이용한 DB 관리
 - Amazon S3를 이용한 이미지 리소스 관리
+- Docker image 빌드 시 테스트 자동화 구현
+- GitHub Actions를 이용한 CI/CD 구성 및 백그라운드 배포 자동화 구현
 
 ## 📐 Service Architecture
 ![무신사 과제 아키텍처](https://github.com/iju1633/shop-server/assets/43805087/9bd9a009-312f-43a7-81ce-aadbbf97c111)
 - Gradle로 빌드합니다.  
-- Jar 파일을 빌드하고 Docker Image를 만들어 Amazon EC2 인스턴스에서 docker를 사용하여 배포합니다.
+- Docker Image를 만들어 Amazon EC2 인스턴스에서 docker를 사용하여 배포합니다.
 
 ## 🖥️ Build Environment
 
-이 프로젝트는 Gradle, Amazon Web Service 및 Docker를 사용합니다.  
-이 프로젝트를 빌드하고 실행하려면 먼저 Gradle로 `.jar`을 빌드하고 docker 이미지를 빌드하여 dockerhub에 푸시합니다.  
-그런 다음 Amazon EC2에서 이미지를 가져와 도커로 배포합니다.
+이 프로젝트는 Amazon Web Service, Docker, GitHub Actions를 사용합니다.  
+
+프로젝트를 실행하려면 먼저 ec2 인스턴스에 접속한 이후 도커 이미지를 생성합니다.  
+`docker build -t shop-server:latest .`  
+그런 다음 container를 만들며 백그라운드 배포를 실행합니다.  
+`docker run -d --name shop-server-container -p 8080:8080 shop-server:latest`
 
 ## 🗄️ ERD
 
