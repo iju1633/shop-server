@@ -13,7 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Table(name = "menu")
-public class Menu {
+public class Menu extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
