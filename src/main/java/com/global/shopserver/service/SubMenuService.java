@@ -29,13 +29,20 @@ public class SubMenuService {
     @Transactional
     public void makeSubMenu(SubMenuRegisterDTO subMenuRegisterDTO) {
 
-        // 이미 등록된 하위 메뉴인지 검사 (같은 이름이 있다면 이미 등록된 하위 메뉴라고 판단)
-        SubMenu subMenu = subMenuRepository.findSubMenuByName(subMenuRegisterDTO.getName());
-        if (subMenu != null) {
-            throw new IllegalArgumentException("이미 등록된 하위 메뉴입니다.");
+        Menu menu = menuRepository.findMenuById((long) subMenuRegisterDTO.getMenuId());
+        // 등록할 상위 메뉴가 존재하지 않는 경우
+        if (menu == null) {
+            throw new IllegalArgumentException("등록할 상위 메뉴가 존재하지 않습니다.");
         }
 
-        // 새로운 하위 메뉴 등록
+        // 이미 할당된 경우 (같은 이름이 있다면 이미 할당된 하위 메뉴라고 판단)
+        for (SubMenu subMenu : subMenuRepository.findAllByMenu(menu)) {
+            if (subMenu.getName().equals(subMenuRegisterDTO.getName())) {
+                throw new IllegalArgumentException("이미 등록된 하위 메뉴입니다.");
+            }
+        }
+
+        // 새로운 하위 메뉴 생성
         SubMenu newSubMenu = SubMenu.builder()
                 .menu(menuRepository.findMenuById((long) subMenuRegisterDTO.getMenuId()))
                 .name(subMenuRegisterDTO.getName())
@@ -45,7 +52,7 @@ public class SubMenuService {
                 .deleted('N')
                 .build();
 
-        // 하위 메뉴 저장
+        // 하위 메뉴 등록
         subMenuRepository.save(newSubMenu);
     }
 
@@ -63,13 +70,6 @@ public class SubMenuService {
         // 수정할 하위 메뉴가 이미 삭제된 경우
         if (subMenu.getDeleted() == 'Y') {
             throw new IllegalArgumentException("이미 삭제된 하위 메뉴입니다.");
-        }
-
-        // 상위 메뉴에 할당이 된 하위 메뉴인 경우
-        for (Menu menu : menuRepository.findAll()) {
-            if (subMenuRepository.existsByMenuAndId(menu, subMenu.getId())) {
-                throw new IllegalArgumentException("상위 메뉴와 연관된 하위 메뉴는 수정할 수 없습니다.");
-            }
         }
 
         // 이미 등록된 하위 메뉴인지 검사 (같은 이름이 있다면 이미 등록된 하위 메뉴라고 판단)
@@ -102,13 +102,6 @@ public class SubMenuService {
         // 이미 삭제된 하위 메뉴인 경우
         if (subMenu.getDeleted() == 'Y') {
             throw new IllegalArgumentException("이미 삭제된 하위 메뉴입니다.");
-        }
-
-        // 상위 메뉴에 할당이 된 하위 메뉴인 경우
-        for (Menu menu : menuRepository.findAll()) {
-            if (subMenuRepository.existsByMenuAndId(menu, subMenu.getId())) {
-                throw new IllegalArgumentException("상위 메뉴와 연관된 하위 메뉴는 삭제할 수 없습니다.");
-            }
         }
 
         // 논리적 삭제 및 저장
