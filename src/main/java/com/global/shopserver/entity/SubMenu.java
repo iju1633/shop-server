@@ -13,7 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Table(name = "sub_menu")
-public class SubMenu extends BaseTimeEntity {
+public class SubMenu extends BaseTimeEntity { // 하위 메뉴 entity
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
