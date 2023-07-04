@@ -40,7 +40,7 @@
 <img width="660" alt="스크린샷 2023-07-04 오후 2 59 06" src="https://github.com/iju1633/shop-server/assets/43805087/03f15192-4529-4820-b878-3cfcceeaca4d">
 
 ## 📃 API Specification
-[Swagger Link](http://3.37.107.107/swagger-ui/#/)  
+[Swagger Link](http://3.37.107.107:8080/swagger-ui/#)  
 <img width="725" alt="스크린샷 2023-07-03 오전 3 26 21" src="https://github.com/iju1633/shop-server/assets/43805087/7ebba94a-e691-4fb2-aa91-06bee1721c6a">
  
 이 프로젝트는 클라이언트와의 통신을 위해 swagger Specification 2.0 및 Swagger UI를 활용합니다.  
