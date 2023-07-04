@@ -13,32 +13,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Stop and remove existing Docker containers
+      - name: Run scripts in EC2 server
         uses: appleboy/ssh-action@master
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           host: ${{ secrets.EC2_PUBLIC_IP }}
           username: ${{ secrets.SSH_USER }}
           script: |
-            cd shop-server
-            docker stop shop-server-container
-            docker rm shop-server-container
-      - name: Pull latest code and build Docker image
-        uses: appleboy/ssh-action@master
-        with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          host: ${{ secrets.EC2_PUBLIC_IP }}
-          username: ${{ secrets.SSH_USER }}
-          script: |
+            sudo docker stop shop-server-container
+            sudo docker rm shop-server-container
             cd shop-server
             git pull
-            docker build -t shop-server:latest .
-      - name: Start Docker containers
-        uses: appleboy/ssh-action@master
-        with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          host: ${{ secrets.EC2_PUBLIC_IP }}
-          username: ${{ secrets.SSH_USER }}
-          script: |
-            cd shop-server
-            docker run -d --name shop-server-container -p 8080:8080 shop-server:latest
+            cd ..
+            sudo docker build -t shop-server:latest .
+            sudo docker run -d --name shop-server-container -p 8080:8080 shop-server:latest
