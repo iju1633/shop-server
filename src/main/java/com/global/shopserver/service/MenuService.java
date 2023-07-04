@@ -53,14 +53,9 @@ public class MenuService {
 
         Menu existingMenu = menuRepository.findMenuById((long) menuUpdateDTO.getMenuId());
 
-        // 수정할 상위 메뉴가 존재하지 않는 경우
-        if (existingMenu == null) {
+        // 수정할 상위 메뉴가 존재하지 않는 경우 / 삭제된 상위 메뉴를 수정하려는 경우
+        if (existingMenu == null || existingMenu.getDeleted() == 'Y') {
             throw new IllegalArgumentException("수정할 상위 메뉴가 존재하지 않습니다.");
-        }
-
-        // 수정할 상위 메뉴가 이미 삭제된 경우
-        if (existingMenu.getDeleted() == 'Y') {
-            throw new IllegalArgumentException("이미 삭제된 상위 메뉴입니다.");
         }
 
         // 이미 등록된 상위 메뉴인지 검사 (같은 이름이 있다면 이미 등록된 상위 메뉴라고 판단)
@@ -87,14 +82,9 @@ public class MenuService {
 
         Menu menu = menuRepository.findMenuById((long) menuDeleteDTO.getMenuId());
 
-        // 삭제할 상위 메뉴가 존재하지 않는 경우
-        if (menu == null) {
+        // 삭제할 상위 메뉴가 존재하지 않는 경우 / 삭제된 상위 메뉴를 또 삭제하려는 경우
+        if (menu == null || menu.getDeleted() == 'Y') {
             throw new IllegalArgumentException("삭제할 상위 메뉴가 존재하지 않습니다.");
-        }
-
-        // 이미 삭제된 상위 메뉴인 경우
-        if (menu.getDeleted() == 'Y') {
-            throw new IllegalArgumentException("이미 삭제된 상위 메뉴입니다.");
         }
 
         // 논리적 삭제 및 저장
@@ -135,14 +125,9 @@ public class MenuService {
 
         Menu menu = menuRepository.findMenuById(Long.valueOf(menuId));
 
-        // 상위 메뉴가 존재하지 않는 경우
-        if (menu == null) {
+        // 상위 메뉴가 존재하지 않는 경우 / 삭제된 상위 메뉴를 조회히려는 경우
+        if (menu == null || menu.getDeleted() == 'Y') {
             throw new IllegalArgumentException("상위 메뉴가 존재하지 않습니다.");
-        }
-
-        // 삭제된 상위 메뉴인 경우
-        if (menu.getDeleted() == 'Y') {
-            throw new IllegalArgumentException("삭제된 상위 메뉴입니다.");
         }
 
         // 상위 메뉴의 하위 메뉴 할당

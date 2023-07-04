@@ -51,14 +51,9 @@ public class BannerService {
 
         Banner existingBanner = bannerRepository.findBannerById((long) bannerUpdateDTO.getBannerId());
 
-        // 수정할 배너가 존재하지 않는 경우
-        if (existingBanner == null) {
+        // 수정할 배너가 존재하지 않는 경우 / 삭제된 배너를 수정하려는 경우
+        if (existingBanner == null || existingBanner.getDeleted() == 'Y') {
             throw new IllegalArgumentException("수정할 배너가 존재하지 않습니다.");
-        }
-
-        // 수정할 배너가 이미 삭제된 경우
-        if (existingBanner.getDeleted() == 'Y') {
-            throw new IllegalArgumentException("이미 삭제된 배너입니다.");
         }
 
         // 이미 등록된 배너인지 검사 (배너 이미지이나 설명이 같은 것이 있다면 이미 등록된 배너라고 판단, 배너 클릭 시 이동하는 링크는 중복 가능)
@@ -84,14 +79,9 @@ public class BannerService {
 
         Banner banner = bannerRepository.findBannerById((long) bannerDeleteDTO.getBannerId());
 
-        // 삭제할 배너가 존재하지 않는 경우
-        if (banner == null) {
+        // 삭제할 배너가 존재하지 않는 경우 / 삭제된 배너를 또 삭제하려는 경우
+        if (banner == null || banner.getDeleted() == 'Y') {
             throw new IllegalArgumentException("삭제할 배너가 존재하지 않습니다.");
-        }
-
-        // 이미 삭제된 배너인 경우
-        if (banner.getDeleted() == 'Y') {
-            throw new IllegalArgumentException("이미 삭제된 배너입니다.");
         }
 
         // 논리적 삭제
@@ -120,14 +110,9 @@ public class BannerService {
 
         Banner banner = bannerRepository.findBannerById(Long.valueOf(bannerId));
 
-        // 배너가 존재하지 않는 경우
-        if (banner == null) {
+        // 배너가 존재하지 않는 경우 / 삭제된 배너를 조회하려는 경우
+        if (banner == null || banner.getDeleted() == 'Y') {
             throw new IllegalArgumentException("배너가 존재하지 않습니다.");
-        }
-
-        // 삭제된 배너인 경우
-        if (banner.getDeleted() == 'Y') {
-            throw new IllegalArgumentException("삭제된 배너입니다.");
         }
 
         // 배너 반환
