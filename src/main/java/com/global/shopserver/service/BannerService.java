@@ -26,9 +26,11 @@ public class BannerService {
     public void makeBanner(BannerRegisterDTO bannerRegisterDTO) {
 
         // 이미 등록된 배너인지 검사 (배너 이미지이나 설명이 같은 것이 있다면 이미 등록된 배너라고 판단, 배너 클릭 시 이동하는 링크는 중복 가능)
-        Banner banner = bannerRepository.findBannerByImageUrlOrIntroduction(bannerRegisterDTO.getImageUrl(), bannerRegisterDTO.getIntroduction());
-        if (banner != null) {
-            throw new IllegalArgumentException("이미 등록된 배너입니다.");
+        List<Banner> banners = bannerRepository.findAllByImageUrlOrIntroduction(bannerRegisterDTO.getImageUrl(), bannerRegisterDTO.getIntroduction());
+        for (Banner banner : banners) {
+            if (banner.getDeleted() == 'N') {
+                throw new IllegalArgumentException("이미 등록된 배너입니다.");
+            }
         }
 
         // 새로운 배너 등록
@@ -47,30 +49,33 @@ public class BannerService {
     @Transactional
     public void updateBanner(BannerUpdateDTO bannerUpdateDTO) {
 
-        Banner banner = bannerRepository.findBannerById((long) bannerUpdateDTO.getBannerId());
+        Banner existingBanner = bannerRepository.findBannerById((long) bannerUpdateDTO.getBannerId());
 
         // 수정할 배너가 존재하지 않는 경우
-        if (banner == null) {
+        if (existingBanner == null) {
             throw new IllegalArgumentException("수정할 배너가 존재하지 않습니다.");
         }
 
         // 수정할 배너가 이미 삭제된 경우
-        if (banner.getDeleted() == 'Y') {
+        if (existingBanner.getDeleted() == 'Y') {
             throw new IllegalArgumentException("이미 삭제된 배너입니다.");
         }
 
         // 이미 등록된 배너인지 검사 (배너 이미지이나 설명이 같은 것이 있다면 이미 등록된 배너라고 판단, 배너 클릭 시 이동하는 링크는 중복 가능)
-        if (bannerRepository.findBannerByImageUrlOrIntroduction(bannerUpdateDTO.getNewImageUrl(), bannerUpdateDTO.getNewIntroduction()) != null) {
-            throw new IllegalArgumentException("이미 등록된 배너입니다.");
+        List<Banner> banners = bannerRepository.findAllByImageUrlOrIntroduction(bannerUpdateDTO.getNewImageUrl(), bannerUpdateDTO.getNewIntroduction());
+        for (Banner banner : banners) {
+            if (banner.getDeleted() == 'N') {
+                throw new IllegalArgumentException("이미 등록된 배너입니다.");
+            }
         }
 
         // 배너 정보 새로 setting
-        banner.setImageUrl(bannerUpdateDTO.getNewImageUrl());
-        banner.setLink(bannerUpdateDTO.getNewLink());
-        banner.setIntroduction(bannerUpdateDTO.getNewIntroduction());
+        existingBanner.setImageUrl(bannerUpdateDTO.getNewImageUrl());
+        existingBanner.setLink(bannerUpdateDTO.getNewLink());
+        existingBanner.setIntroduction(bannerUpdateDTO.getNewIntroduction());
 
         // 배너 갱신
-        bannerRepository.save(banner);
+        bannerRepository.save(existingBanner);
     }
 
     // 배너 (논리적) 삭제

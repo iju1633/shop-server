@@ -35,54 +35,46 @@ class MenuServiceTest { // MenuService의 메서드별 테스트 진행
     @Test
     void testMakeMenu() {
 
-        // when
-        when(menuRepository.findMenuByName(anyString())).thenReturn(new Menu(1L, "name", "imageUrl", "introduction", 0, 'N'));
+        when(menuRepository.findAllByName(anyString())).thenReturn(List.of(new Menu(1L, "name", "imageUrl", "introduction", 0, 'N')));
 
-        // then
         menuService.makeMenu(new MenuRegisterDTO());
     }
 
     @Test
     void testUpdateMenu() {
 
-        // when
         when(menuRepository.findMenuById(anyLong())).thenReturn(new Menu(1L, "name", "imageUrl", "introduction", 0, 'N'));
-        when(menuRepository.findMenuByName(anyString())).thenReturn(new Menu(1L, "name", "imageUrl", "introduction", 0, 'N'));
+        when(menuRepository.findAllByName(anyString())).thenReturn(List.of(new Menu(1L, "name", "imageUrl", "introduction", 0, 'N')));
 
-        // then
         menuService.updateMenu(new MenuUpdateDTO());
     }
 
     @Test
     void testDeleteMenu() {
 
-        // when
         when(menuRepository.findMenuById(anyLong())).thenReturn(new Menu(1L, "name", "imageUrl", "introduction", 0, 'N'));
 
-        // then
         menuService.deleteMenu(new MenuDeleteDTO());
     }
 
     @Test
     void testShowMenuList() {
 
-        // when
         when(subMenuRepository.findAllByMenu(any())).thenReturn(List.of(new SubMenu(1L, "name", "imageUrl", "introduction", 0, 'N', new Menu(1L, "name", "imageUrl", "introduction", 0, 'N'))));
 
-        // then
         List<MenuDTO> result = menuService.showMenuList();
+
         Assertions.assertNotNull(result);
     }
 
     @Test
     void testShowMenu() {
 
-        // when
         when(menuRepository.findMenuById(anyLong())).thenReturn(new Menu(1L, "name", "imageUrl", "introduction", 0, 'N'));
         when(subMenuRepository.findAllByMenu(any())).thenReturn(List.of(new SubMenu(1L, "name", "imageUrl", "introduction", 0, 'N', new Menu(1L, "name", "imageUrl", "introduction", 0, 'N'))));
 
-        // then
         MenuDTO result = menuService.showMenu("1");
+
         Assertions.assertNotNull(result);
     }
 }

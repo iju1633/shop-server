@@ -37,7 +37,7 @@ public class SubMenuService {
 
         // 이미 할당된 경우 (같은 이름이 있다면 이미 할당된 하위 메뉴라고 판단)
         for (SubMenu subMenu : subMenuRepository.findAllByMenu(menu)) {
-            if (subMenu.getName().equals(subMenuRegisterDTO.getName())) {
+            if (subMenu.getName().equals(subMenuRegisterDTO.getName()) && subMenu.getDeleted() == 'N') {
                 throw new IllegalArgumentException("이미 등록된 하위 메뉴입니다.");
             }
         }
@@ -60,32 +60,35 @@ public class SubMenuService {
     @Transactional
     public void updateSubMenu(SubMenuUpdateDTO subMenuUpdateDTO) {
 
-        SubMenu subMenu = subMenuRepository.findSubMenuById((long) subMenuUpdateDTO.getSubMenuId());
+        SubMenu exisingSubMenu = subMenuRepository.findSubMenuById((long) subMenuUpdateDTO.getSubMenuId());
 
         // 수정할 하위 메뉴가 존재하지 않는 경우
-        if (subMenu == null) {
+        if (exisingSubMenu == null) {
             throw new IllegalArgumentException("수정할 하위 메뉴가 존재하지 않습니다.");
         }
 
         // 수정할 하위 메뉴가 이미 삭제된 경우
-        if (subMenu.getDeleted() == 'Y') {
+        if (exisingSubMenu.getDeleted() == 'Y') {
             throw new IllegalArgumentException("이미 삭제된 하위 메뉴입니다.");
         }
 
         // 이미 등록된 하위 메뉴인지 검사 (같은 이름이 있다면 이미 등록된 하위 메뉴라고 판단)
-        if (subMenuRepository.findSubMenuByName(subMenuUpdateDTO.getNewName()) != null) {
-            throw new IllegalArgumentException("이미 등록된 하위 메뉴입니다.");
+        for (SubMenu subMenu : subMenuRepository.findAllByName(subMenuUpdateDTO.getNewName())) {
+            if (subMenu.getDeleted() == 'N') {
+                throw new IllegalArgumentException("이미 등록된 하위 메뉴입니다.");
+            }
         }
 
+
         // 하위 메뉴에 새로운 정보 setting
-        subMenu.setMenu(menuRepository.findMenuById((long) subMenuUpdateDTO.getSubMenuId()));
-        subMenu.setName(subMenuUpdateDTO.getNewName());
-        subMenu.setImageUrl(subMenuUpdateDTO.getNewImageUrl());
-        subMenu.setIntroduction(subMenuUpdateDTO.getNewIntroduction());
-        subMenu.setPrice(subMenuUpdateDTO.getNewPrice());
+        exisingSubMenu.setMenu(menuRepository.findMenuById((long) subMenuUpdateDTO.getSubMenuId()));
+        exisingSubMenu.setName(subMenuUpdateDTO.getNewName());
+        exisingSubMenu.setImageUrl(subMenuUpdateDTO.getNewImageUrl());
+        exisingSubMenu.setIntroduction(subMenuUpdateDTO.getNewIntroduction());
+        exisingSubMenu.setPrice(subMenuUpdateDTO.getNewPrice());
 
         // 하위 메뉴 갱신
-        subMenuRepository.save(subMenu);
+        subMenuRepository.save(exisingSubMenu);
     }
 
     // 하위 메뉴 (논리적) 삭제
