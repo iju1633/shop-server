@@ -35,7 +35,7 @@ public class SubMenuController {
 
     // 하위 메뉴 수정
     @PatchMapping("/update")
-    @ApiOperation(value = "하위 메뉴 수정", notes = "하위 메뉴의 정보를 수정합니다. 수정된 새로운 하위 메뉴가 이미 존재하거나, 이미 상위 메뉴와 관계 설정이 있는 경우, 수정 불가능합니다.")
+    @ApiOperation(value = "하위 메뉴 수정", notes = "하위 메뉴의 정보를 수정합니다.\n수정된 새로운 하위 메뉴가 이미 존재하거나, 이미 상위 메뉴와 관계 설정이 있는 경우, 수정 불가능합니다.")
     public ResponseEntity<Void> updateSubMenu(@Validated @RequestBody SubMenuUpdateDTO subMenuUpdateDTO) {
 
         subMenuService.updateSubMenu(subMenuUpdateDTO);
@@ -44,7 +44,7 @@ public class SubMenuController {
 
     // 하위 메뉴 삭제
     @PatchMapping("/delete")
-    @ApiOperation(value = "하위 메뉴 (논리적)삭제", notes = "논리적 삭제를 진행합니다. 상위 메뉴와의 연결도 사라집니다.")
+    @ApiOperation(value = "하위 메뉴 (논리적)삭제", notes = "논리적 삭제를 진행합니다.\n상위 메뉴와의 연결도 사라집니다.")
     public ResponseEntity<Void> deleteSubMenu(SubMenuDeleteDTO subMenuDeleteDTO) {
 
         subMenuService.deleteSubMenu(subMenuDeleteDTO);
