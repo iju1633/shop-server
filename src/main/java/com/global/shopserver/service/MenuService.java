@@ -61,7 +61,7 @@ public class MenuService { // 상위 메뉴 관련 서비스 로직 구현
         // 이미 등록된 상위 메뉴인지 검사 (같은 이름이 있다면 이미 등록된 상위 메뉴라고 판단)
         List<Menu> menus = menuRepository.findAllByName(menuUpdateDTO.getNewName());
         for (Menu menu : menus) {
-            if (menu.getDeleted() == 'N') {
+            if (menu.getDeleted() == 'N' && !menu.getId().equals(existingMenu.getId())) { // 삭제되지 않은 상태이고 수정하려는 엔티티를 제외하고 중복이 일어나는 경우
                 throw new IllegalArgumentException("이미 등록된 상위 메뉴입니다.");
             }
         }
