@@ -22,6 +22,8 @@
 ![Notion](https://img.shields.io/badge/Notion-000000.svg?&style=for-the-badge&logo=Notion&logoColor=white)
 ![MySQL Workbench](https://img.shields.io/badge/MySQL_Workbench-379483.svg?&style=for-the-badge&logo=mysql-workbench&logoColor=white)
 ![FileZilla](https://img.shields.io/badge/FileZilla-000000.svg?&style=for-the-badge&logo=FileZilla&logoColor=white)
+![Draw.io](https://img.shields.io/badge/Draw.io-FF9900.svg?&style=for-the-badge&logo=Draw-io&logoColor=white)
+
 
 ## 📖 Explanation
 
@@ -50,7 +52,7 @@
 ## 🖥️ Build Method
 - 해당 [링크](https://www.notion.so/fa997457cd2444a8848d7e68ec80dec2?pvs=4)는 운영체제별 웹서버를 로컬에서 실행시키는 방법을 설명하고 있습니다.
 - **(추천)** 추가적으로 웹서버를 배포해놨으니 [API Documentation Link](http://3.37.107.107:8080/swagger-ui/#)로도 구현한 기능을 테스트해볼 수 있습니다.
-  - [테스트 방법](https://cyclic-baboon-a84.notion.site/674f32b8473242cba96064bafa282af0?pvs=4)
+  - [테스트 방법 가이드](https://cyclic-baboon-a84.notion.site/674f32b8473242cba96064bafa282af0?pvs=4)
 
 ## 🗄️ ERD
 
@@ -59,7 +61,7 @@
 ## 📃 API Documentation
 [API Documentation Link](http://3.37.107.107:8080/swagger-ui/#)  
 <img width="725" alt="스크린샷 2023-07-03 오전 3 26 21" src="https://github.com/iju1633/shop-server/assets/43805087/7ebba94a-e691-4fb2-aa91-06bee1721c6a">
-- [테스트 방법](https://cyclic-baboon-a84.notion.site/674f32b8473242cba96064bafa282af0?pvs=4)
+- [테스트 방법 가이드](https://cyclic-baboon-a84.notion.site/674f32b8473242cba96064bafa282af0?pvs=4)
  
 이 프로젝트는 클라이언트와의 통신을 위해 swagger Specification 2.0 및 Swagger UI를 활용합니다.  
 
