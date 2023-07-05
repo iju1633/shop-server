@@ -59,7 +59,7 @@ public class BannerService { // 배너 관련 서비스 로직 구현
         // 이미 등록된 배너인지 검사 (배너 이미지이나 설명이 같은 것이 있다면 이미 등록된 배너라고 판단, 배너 클릭 시 이동하는 링크는 중복 가능)
         List<Banner> banners = bannerRepository.findAllByImageUrlOrIntroduction(bannerUpdateDTO.getNewImageUrl(), bannerUpdateDTO.getNewIntroduction());
         for (Banner banner : banners) {
-            if (banner.getDeleted() == 'N') {
+            if (banner.getDeleted() == 'N' && !banner.getId().equals(existingBanner.getId())) { // 삭제되지 않은 상태이고 수정하려는 엔티티를 제외하고 중복이 일어나는 경우
                 throw new IllegalArgumentException("이미 등록된 배너입니다.");
             }
         }
