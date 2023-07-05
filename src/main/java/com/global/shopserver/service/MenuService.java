@@ -26,8 +26,8 @@ public class MenuService { // 상위 메뉴 관련 서비스 로직 구현
     @Transactional
     public void makeMenu(MenuRegisterDTO menuRegisterDTO) {
 
-        // 이미 등록된 상위 메뉴인지 검사 (같은 이름이 있다면 이미 등록된 상위 메뉴라고 판단)
-        List<Menu> menus = menuRepository.findAllByName(menuRegisterDTO.getName());
+        // 이미 등록된 상위 메뉴인지 검사 (같은 이름이나 이미지가 있다면 이미 등록된 상위 메뉴라고 판단)
+        List<Menu> menus = menuRepository.findAllByNameOrImageUrl(menuRegisterDTO.getName(), menuRegisterDTO.getImageUrl());
         for (Menu menu : menus) {
             if (menu.getDeleted() == 'N') {
                 throw new IllegalArgumentException("이미 등록된 상위 메뉴입니다.");
@@ -59,7 +59,7 @@ public class MenuService { // 상위 메뉴 관련 서비스 로직 구현
         }
 
         // 이미 등록된 상위 메뉴인지 검사 (같은 이름이 있다면 이미 등록된 상위 메뉴라고 판단)
-        List<Menu> menus = menuRepository.findAllByName(menuUpdateDTO.getNewName());
+        List<Menu> menus = menuRepository.findAllByNameOrImageUrl(menuUpdateDTO.getNewName(), menuUpdateDTO.getNewImageUrl());
         for (Menu menu : menus) {
             if (menu.getDeleted() == 'N' && !menu.getId().equals(existingMenu.getId())) { // 삭제되지 않은 상태이고 수정하려는 엔티티를 제외하고 중복이 일어나는 경우
                 throw new IllegalArgumentException("이미 등록된 상위 메뉴입니다.");
@@ -85,6 +85,12 @@ public class MenuService { // 상위 메뉴 관련 서비스 로직 구현
         // 삭제할 상위 메뉴가 존재하지 않는 경우 / 삭제된 상위 메뉴를 또 삭제하려는 경우
         if (menu == null || menu.getDeleted() == 'Y') {
             throw new IllegalArgumentException("삭제할 상위 메뉴가 존재하지 않습니다.");
+        }
+
+        // 연결되어 있는 하위 메뉴 모두 논리적 삭제 (링크를 없앰, 하위 메뉴의 경우 여러 상위 메뉴와 링크 가능하기 때문)
+        for (SubMenu subMenu : subMenuRepository.findAllByMenu(menu)) {
+            subMenu.setDeleted('Y');
+            subMenuRepository.save(subMenu);
         }
 
         // 논리적 삭제 및 저장

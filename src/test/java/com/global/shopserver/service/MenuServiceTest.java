@@ -35,7 +35,7 @@ class MenuServiceTest { // MenuService의 메서드별 테스트 진행
     @Test
     void testMakeMenu() {
 
-        when(menuRepository.findAllByName(anyString())).thenReturn(List.of(new Menu(1L, "name", "imageUrl", "introduction", 0, 'N')));
+        when(menuRepository.findAllByNameOrImageUrl(anyString(), anyString())).thenReturn(List.of(new Menu(1L, "name", "imageUrl", "introduction", 0, 'N')));
 
         menuService.makeMenu(new MenuRegisterDTO());
     }
@@ -44,7 +44,7 @@ class MenuServiceTest { // MenuService의 메서드별 테스트 진행
     void testUpdateMenu() {
 
         when(menuRepository.findMenuById(anyLong())).thenReturn(new Menu(1L, "name", "imageUrl", "introduction", 0, 'N'));
-        when(menuRepository.findAllByName(anyString())).thenReturn(List.of(new Menu(1L, "name", "imageUrl", "introduction", 0, 'N')));
+        when(menuRepository.findAllByNameOrImageUrl(anyString(), anyString())).thenReturn(List.of(new Menu(1L, "name", "imageUrl", "introduction", 0, 'N')));
 
         menuService.updateMenu(new MenuUpdateDTO());
     }
