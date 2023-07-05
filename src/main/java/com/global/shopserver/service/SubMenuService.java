@@ -79,7 +79,6 @@ public class SubMenuService { // 하위 메뉴 관련 서비스 로직 구현
         }
 
         // 하위 메뉴에 새로운 정보 setting
-        exisingSubMenu.setMenu(menuRepository.findMenuById((long) subMenuUpdateDTO.getSubMenuId()));
         exisingSubMenu.setName(subMenuUpdateDTO.getNewName());
         exisingSubMenu.setImageUrl(subMenuUpdateDTO.getNewImageUrl());
         exisingSubMenu.setIntroduction(subMenuUpdateDTO.getNewIntroduction());
