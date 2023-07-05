@@ -34,7 +34,7 @@ public class BannerController {
 
     // 배너 수정
     @PatchMapping("/update")
-    @ApiOperation(value = "배너 수정", notes = "배너의 정보를 수정합니다.\n 배너 이미지이나 설명의 경우, 중복 허용하지 않습니다.")
+    @ApiOperation(value = "배너 수정", notes = "배너의 정보를 수정합니다.\n 배너 이미지의 경우, 중복 허용하지 않습니다.")
     public ResponseEntity<Void> updateBanner(@Validated @RequestBody BannerUpdateDTO bannerUpdateDTO) {
 
         bannerService.updateBanner(bannerUpdateDTO);

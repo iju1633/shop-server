@@ -35,10 +35,12 @@ public class SubMenuService { // 하위 메뉴 관련 서비스 로직 구현
             throw new IllegalArgumentException("등록할 상위 메뉴가 존재하지 않습니다.");
         }
 
-        // 이미 할당된 경우 (같은 이름이 있다면 이미 할당된 하위 메뉴라고 판단)
-        for (SubMenu subMenu : subMenuRepository.findAllByMenu(menu)) {
-            if (subMenu.getName().equals(subMenuRegisterDTO.getName()) && subMenu.getDeleted() == 'N') {
-                throw new IllegalArgumentException("이미 등록된 하위 메뉴입니다.");
+        // 이미 존재하는 경우 (같은 이름이나 이미지가 있다면 이미 할당된 하위 메뉴라고 판단)
+        for (SubMenu subMenu : subMenuRepository.findAll()) {
+            if (subMenu.getDeleted() == 'N') {
+                if (subMenu.getName().equals(subMenuRegisterDTO.getName()) || subMenu.getImageUrl().equals(subMenuRegisterDTO.getImageUrl())) {
+                    throw new IllegalArgumentException("이미 등록된 하위 메뉴입니다.");
+                }
             }
         }
 
@@ -67,10 +69,12 @@ public class SubMenuService { // 하위 메뉴 관련 서비스 로직 구현
             throw new IllegalArgumentException("수정할 하위 메뉴가 존재하지 않습니다.");
         }
 
-        // 이미 등록된 하위 메뉴인지 검사 (같은 이름이 있다면 이미 등록된 하위 메뉴라고 판단)
-        for (SubMenu subMenu : subMenuRepository.findAllByName(subMenuUpdateDTO.getNewName())) {
-            if (subMenu.getDeleted() == 'N' && !subMenu.getId().equals(exisingSubMenu.getId())) { // 삭제되지 않은 상태이고 수정하려는 엔티티를 제외하고 중복이 일어나는 경우
-                throw new IllegalArgumentException("이미 등록된 하위 메뉴입니다.");
+        // 수정하려는 하위 메뉴를 제외하고 기존의 데이터와 중복되는 경우 (같은 이름이나 이미지가 있다면 이미 존재하는 하위 메뉴라고 판단)
+        for (SubMenu subMenu : subMenuRepository.findAll()) {
+            if (subMenu.getDeleted() == 'N' && !subMenu.getId().equals(exisingSubMenu.getId())) {
+                if (subMenu.getName().equals(subMenuUpdateDTO.getNewName()) || subMenu.getImageUrl().equals(subMenuUpdateDTO.getNewImageUrl())) {
+                    throw new IllegalArgumentException("이미 등록된 하위 메뉴입니다.");
+                }
             }
         }
 
