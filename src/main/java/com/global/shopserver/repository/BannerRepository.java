@@ -11,5 +11,5 @@ public interface BannerRepository extends JpaRepository<Banner, Long> {
 
     Banner findBannerById(Long bannerId); // id 값으로 엔티티 찾음
 
-    List<Banner> findAllByImageUrlOrIntroduction(String imageUrl, String introduction); // 논리적 삭제를 하므로 중복(image, introduction)될 수 있기에 list를 반환 (등록과 수정에 사용)
+    List<Banner> findAllByImageUrl(String imageUrl); // 논리적 삭제를 하므로 중복(image url)될 수 있기에 list를 반환 (등록과 수정에 사용)
 }

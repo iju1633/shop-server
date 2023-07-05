@@ -31,7 +31,7 @@ class BannerServiceTest { // BannerService의 메서드 별 테스트 진행
     @Test
     void testMakeBanner() {
 
-        when(bannerRepository.findAllByImageUrlOrIntroduction(anyString(), anyString())).thenReturn(List.of(new Banner(1L, "imageUrl", "link", "introduction", 'N')));
+        when(bannerRepository.findAllByImageUrl(anyString())).thenReturn(List.of(new Banner(1L, "imageUrl", "link", "introduction", 'N')));
 
         bannerService.makeBanner(new BannerRegisterDTO());
     }
@@ -40,7 +40,7 @@ class BannerServiceTest { // BannerService의 메서드 별 테스트 진행
     void testUpdateBanner() {
 
         when(bannerRepository.findBannerById(anyLong())).thenReturn(new Banner(1L, "imageUrl", "link", "introduction", 'N'));
-        when(bannerRepository.findAllByImageUrlOrIntroduction(anyString(), anyString())).thenReturn(List.of(new Banner(1L, "imageUrl", "link", "introduction", 'N')));
+        when(bannerRepository.findAllByImageUrl(anyString())).thenReturn(List.of(new Banner(1L, "imageUrl", "link", "introduction", 'N')));
 
         bannerService.updateBanner(new BannerUpdateDTO());
     }
