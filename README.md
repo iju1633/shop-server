@@ -45,18 +45,26 @@
 - 서비스 플로우 설명 및 Issue에 문서화한 내용을 기반으로한 피드백을 수용하여 **UX 개선**
 
 ## 📐 Service Architecture
-![무신사 과제 아키텍처](https://github.com/iju1633/shop-server/assets/43805087/9bd9a009-312f-43a7-81ce-aadbbf97c111)
+<img src="https://github.com/iju1633/shop-server/assets/43805087/9bd9a009-312f-43a7-81ce-aadbbf97c111" width="400" height="400">
+
 - Gradle로 빌드합니다.  
 - Spring Boot 프로젝트 내에 Dockerfile을 만들고 Amazon EC2 인스턴스 내의 docker를 사용하여 배포합니다.
 
 ## 🖥️ Build Method
-- 해당 [링크](https://www.notion.so/fa997457cd2444a8848d7e68ec80dec2?pvs=4)는 운영체제별 웹서버를 로컬에서 실행시키는 방법을 설명하고 있습니다.
+- 해당 [링크](https://www.notion.so/fa997457cd2444a8848d7e68ec80dec2?pvs=4)는 운영체제별(Mac, Window) 웹서버를 로컬에서 실행시키는 방법을 설명하고 있습니다.
 - **(추천)** 웹서버를 배포해놨으니 [API Documentation Link](http://3.37.107.107:8080/swagger-ui/#)로 구현한 기능을 테스트해볼 수 있습니다.
   - [테스트 방법 가이드](https://cyclic-baboon-a84.notion.site/674f32b8473242cba96064bafa282af0?pvs=4)
+ 
+## 📝 Documentation (#Issue)
+- [구현한 기능](https://github.com/iju1633/shop-server/issues/1)
+- [Log 관리](https://github.com/iju1633/shop-server/issues/7)
+- [브랜치 & 코드 & PR 관리 전략](https://github.com/iju1633/shop-server/issues/26)
+- [에러 핸들링](https://github.com/iju1633/shop-server/issues/27)
+- [Amazon Web Service](https://github.com/iju1633/shop-server/issues/30)
 
 ## 🗄️ ERD
 
-<img width="660" alt="스크린샷 2023-07-04 오후 2 59 06" src="https://github.com/iju1633/shop-server/assets/43805087/03f15192-4529-4820-b878-3cfcceeaca4d">
+<img width="660" alt="스크린샷 2023-07-04 오후 2 59 06" src="https://github.com/iju1633/shop-server/assets/43805087/03f15192-4529-4820-b878-3cfcceeaca4d" width="400" height="250">
 
 ## 📃 API Documentation
 [API Documentation Link](http://3.37.107.107:8080/swagger-ui/#)  
