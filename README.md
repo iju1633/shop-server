@@ -42,7 +42,7 @@
 - Docker를 활용한 배포 및 이에 따른 환경 설정 코드 관리 용이
   - **[시스템 아키텍처 설계 개선]** ec2 인스턴스에서 바로 jar 파일 배포 -> ec2 내의 docker를 통해 배포
 - 서비스 플로우 설명 및 Issue에 문서화한 내용을 기반으로한 피드백을 수용하여 **UX 개선**
-- **[보안]** `Nginx`, Let's Encrypt를 활용한 Spring Boot server https 적용
+- [보안] `Nginx`, Let's Encrypt를 활용한 `https` 적용
 
 ## 📐 Service Architecture
 <img src="https://github.com/iju1633/shop-server/assets/43805087/9bd9a009-312f-43a7-81ce-aadbbf97c111" width="400" height="400">
@@ -53,7 +53,7 @@
 ## 🖥️ Build Method
 - 해당 [링크](https://www.notion.so/fa997457cd2444a8848d7e68ec80dec2?pvs=4)는 운영체제별(Mac, Windows) 웹서버를 로컬에서 실행시키는 방법을 설명하고 있습니다.  
 or  
-- **(추천)** 예시 데이터가 포함된 웹서버를 배포해놨으니 [API Documentation Link](https://shop-server.kro.kr/swagger-ui/#/)로 구현된 기능을 프로젝트 빌드 과정 없이 바로 테스트해보실 수 있습니다.
+- **(추천)** 예시 데이터가 포함된 웹서버를 배포해놨으니 [API Documentation Link](https://shop-server.kro.kr/swagger-ui/#/)로 구현된 기능을 **프로젝트 빌드 과정 없이** 바로 테스트해보실 수 있습니다.
   - [테스트 방법 가이드](https://cyclic-baboon-a84.notion.site/674f32b8473242cba96064bafa282af0?pvs=4)
  
 ## 📝 Documentation (#Issue)
