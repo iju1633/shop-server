@@ -1,4 +1,4 @@
-# 👕 2023, Musinsa Global Development Team Assignment
+# 👕 2023, Musinsa 글로벌개발팀 Assignment
 
 [API Documentation](https://shop-server.kro.kr/swagger-ui/#/)  
 고객에게 최적의 탐색을 제안하는 메뉴 서비스를 제공합니다.  
@@ -40,7 +40,7 @@
 - Docker image 빌드 시 **테스트 자동화** 구현
 - `GitHub Actions`를 이용한 CI/CD 파이프라인 구성 및 백그라운드 **배포 자동화** 구현
 - Docker를 활용한 배포 및 이에 따른 환경 설정 코드 관리 용이
-  - **[시스템 아키텍처 설계 개선]** ec2 인스턴스에서 바로 jar 파일 배포 -> ec2 내의 docker를 통해 배포
+  - **[시스템 아키텍처 설계 개선]** ec2 인스턴스에서 바로 jar 파일 배포 → ec2 내의 docker를 통해 배포
 - 서비스 플로우 설명 및 Issue에 문서화한 내용을 기반으로한 피드백을 수용하여 **UX 개선**
 - [보안] `Nginx`, Let's Encrypt를 활용한 `https` 적용
 
@@ -53,7 +53,7 @@
 ## 🖥️ Build Method
 - 해당 [링크](https://www.notion.so/fa997457cd2444a8848d7e68ec80dec2?pvs=4)는 운영체제별(Mac, Windows) 웹서버를 로컬에서 실행시키는 방법을 설명하고 있습니다.  
 or  
-- **(추천)** 예시 데이터가 포함된 웹서버를 배포해놨으니 [API Documentation Link](https://shop-server.kro.kr/swagger-ui/#/)로 구현된 기능을 **프로젝트 빌드 과정 없이** 바로 테스트해보실 수 있습니다.
+- 예시 데이터가 포함된 웹서버를 배포해놨으니 [API Documentation Link](https://shop-server.kro.kr/swagger-ui/#/)로 구현된 기능을 **프로젝트 빌드 과정 없이** 바로 테스트해보실 수 있습니다.
   - [테스트 방법 가이드](https://cyclic-baboon-a84.notion.site/674f32b8473242cba96064bafa282af0?pvs=4)
  
 ## 📝 Documentation (#Issue)
