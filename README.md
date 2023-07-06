@@ -77,7 +77,7 @@ or
 
 ## 📃 API Documentation
 [API Documentation Link](https://shop-server.kro.kr/swagger-ui/#/)  
-<img width="725" alt="스크린샷 2023-07-03 오전 3 26 21" src="https://github.com/iju1633/shop-server/assets/43805087/7ebba94a-e691-4fb2-aa91-06bee1721c6a">
+<img width="723" alt="스크린샷 2023-07-06 오후 7 28 53" src="https://github.com/iju1633/shop-server/assets/43805087/42997bb2-957b-4cea-ad72-7f9a531d8170">
 - [테스트 방법 가이드](https://cyclic-baboon-a84.notion.site/674f32b8473242cba96064bafa282af0?pvs=4)
  
 이 프로젝트는 클라이언트와의 통신을 위해 swagger Specification 2.0 및 Swagger UI를 활용합니다.  
