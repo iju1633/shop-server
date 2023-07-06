@@ -150,4 +150,26 @@ public class MenuService { // 상위 메뉴 관련 서비스 로직 구현
         // 상위 메뉴 반환
         return menuDTO;
     }
+
+    // 특정 상위 메뉴의 연결된 하위 메뉴 리스트 반환
+    public List<SubMenuDTO> showRelatedSubMenuList(String menuId) {
+
+        Menu menu = menuRepository.findMenuById(Long.valueOf(menuId));
+
+        // 상위 메뉴가 존재하지 않는 경우 / 삭제된 상위 메뉴의 연결된 하위 메뉴 리스트를 조회할 경우
+        if (menu == null || menu.getDeleted() == 'Y') {
+            throw new IllegalArgumentException("상위 메뉴가 존재하지 않습니다.");
+        }
+
+        // entity -> dto
+        List<SubMenuDTO> subMenuDTOList = new ArrayList<>();
+        for (SubMenu subMenu : subMenuRepository.findAllByMenu(menu)) {
+            if (subMenu.getDeleted() == 'N') { // 논리적으로 삭제되지 않은 하위 메뉴만 dto로 저장
+                subMenuDTOList.add(SubMenuDTO.from(subMenu));
+            }
+        }
+
+        // 상위 메뉴와 연결된 하위 메뉴 리스트 반환
+        return subMenuDTOList;
+    }
 }

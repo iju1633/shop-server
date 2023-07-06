@@ -1,10 +1,7 @@
 
 package com.global.shopserver.controller;
 
-import com.global.shopserver.dto.MenuDTO;
-import com.global.shopserver.dto.MenuDeleteDTO;
-import com.global.shopserver.dto.MenuRegisterDTO;
-import com.global.shopserver.dto.MenuUpdateDTO;
+import com.global.shopserver.dto.*;
 import com.global.shopserver.service.MenuService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -73,5 +70,21 @@ public class MenuController {
     public ResponseEntity<MenuDTO> showMenu(@PathVariable String menuId) {
 
         return ResponseEntity.ok().body(menuService.showMenu(menuId));
+    }
+
+    // 특정 상위 메뉴의 연결된 하위 메뉴 리스트 반환
+    @GetMapping("/sub-menus/{menuId}")
+    @ApiOperation(value = "특정 상위 메뉴의 연결된 하위 메뉴 리스트 반환", notes = "상위 메뉴 id(Primary Key) 값을 매개변수로 받아 특정 상위 메뉴의 연결된 하위 메뉴 리스트를 반환합니다.")
+    @ApiImplicitParam(
+            name = "menuId"
+            , value = "상위 메뉴 id(Primary Key)"
+            , required = true
+            , dataType = "Long"
+            , paramType = "path"
+            , defaultValue = "None"
+            , example = "1")
+    public ResponseEntity<List<SubMenuDTO>> showRelatedSubMenuList(@PathVariable String menuId) {
+
+        return ResponseEntity.ok().body(menuService.showRelatedSubMenuList(menuId));
     }
 }
