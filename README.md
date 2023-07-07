@@ -60,7 +60,8 @@
 - `Nginx`, Let's Encrypt를 활용한 `https` 적용
 
 ## 📐 Service Architecture
-<img src="https://github.com/iju1633/shop-server/assets/43805087/9bd9a009-312f-43a7-81ce-aadbbf97c111" width="400" height="400">
+<img src="https://github.com/iju1633/shop-server/assets/43805087/9bd9a009-312f-43a7-81ce-aadbbf97c111" width="400" height="400">  
+
 - Gradle로 빌드합니다.  
 - Spring Boot 프로젝트 내에 Dockerfile을 만들고 Amazon EC2 인스턴스 내의 Docker를 사용하여 배포합니다.
 
