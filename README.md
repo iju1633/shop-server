@@ -49,7 +49,7 @@
 
 ## 💎 Main Features
 - `Spring Boot` 애플리케이션으로 구성된 HTTP REST API 서버
-- `Amazon EC2`와 `docker`를 사용한 배포
+- `Amazon EC2`와 `Docker`를 사용한 배포
 - `Amazon RDS`를 이용한 DB 관리
 - `Amazon S3`를 이용한 이미지 리소스 관리
 - Docker image 빌드 시 **테스트 자동화** 구현
@@ -61,9 +61,8 @@
 
 ## 📐 Service Architecture
 <img src="https://github.com/iju1633/shop-server/assets/43805087/9bd9a009-312f-43a7-81ce-aadbbf97c111" width="400" height="400">
-
 - Gradle로 빌드합니다.  
-- Spring Boot 프로젝트 내에 Dockerfile을 만들고 Amazon EC2 인스턴스 내의 docker를 사용하여 배포합니다.
+- Spring Boot 프로젝트 내에 Dockerfile을 만들고 Amazon EC2 인스턴스 내의 Docker를 사용하여 배포합니다.
 
 ## 🖥️ Build Method
 - 해당 [링크](https://www.notion.so/fa997457cd2444a8848d7e68ec80dec2?pvs=4)는 운영체제별(Mac, Windows) 웹서버를 로컬에서 실행시키는 방법을 설명하고 있습니다. 
