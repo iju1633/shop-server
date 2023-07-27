@@ -89,7 +89,6 @@ or
 이 프로젝트는 클라이언트와의 통신을 위해 swagger Specification 2.0 및 Swagger UI를 활용합니다.  
 
 ## 🏛️ Depedency Used
-- implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 - implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 - implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 - implementation 'org.springframework.boot:spring-boot-starter-jdbc'
