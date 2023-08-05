@@ -1,4 +1,4 @@
-# 👕 2023, Musinsa 글로벌개발팀 Assignment
+# 👕 2023, Shop-server
 
 [API Documentation](https://shop-server.kro.kr/swagger-ui/#/)  
 고객에게 최적의 탐색을 제안하는 메뉴 서비스를 제공합니다.  
